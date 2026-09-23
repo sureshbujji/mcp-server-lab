@@ -1,0 +1,10 @@
+[
+  {"id": "BUG-101", "title": "Login page hangs on slow 3G connections", "description": "The login form never resolves when latency exceeds 2s; spinner runs forever.", "severity": "high", "status": "open", "component": "auth"},
+  {"id": "BUG-102", "title": "Password reset email never arrives", "description": "Reset link email is not sent for SSO-linked accounts.", "severity": "medium", "status": "open", "component": "auth"},
+  {"id": "BUG-103", "title": "Checkout discount code SAVE10 computes wrong total", "description": "10% discount applied as 5%; total shows 95.00 instead of 90.00.", "severity": "high", "status": "open", "component": "checkout"},
+  {"id": "BUG-104", "title": "Session timeout does not redirect to login", "description": "After token expiry the app shows a blank screen instead of redirecting.", "severity": "medium", "status": "in_progress", "component": "auth"},
+  {"id": "BUG-105", "title": "Search returns stale results after reindex", "description": "Product search cache is not invalidated when the index rebuilds.", "severity": "low", "status": "open", "component": "search"},
+  {"id": "BUG-106", "title": "Checkout button double-submits order", "description": "Rapid double-click creates two orders; button lacks debounce.", "severity": "critical", "status": "open", "component": "checkout"},
+  {"id": "BUG-107", "title": "Login with expired token returns 500", "description": "Expired bearer token triggers unhandled exception instead of 401.", "severity": "high", "status": "fixed", "component": "auth"},
+  {"id": "BUG-108", "title": "CSV export times out on large datasets", "description": "Export of >50k rows exceeds the 30s gateway timeout.", "severity": "medium", "status": "open", "component": "reporting"}
+]
