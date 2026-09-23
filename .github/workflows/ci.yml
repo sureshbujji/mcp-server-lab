@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Byte-compile check
+        run: python -m py_compile src/qa_server.py src/client_demo.py tests/conftest.py tests/test_schemas.py tests/test_tools_protocol.py tests/test_errors_resources.py
+      - name: Run tests
+        run: pytest -q
+      - name: Mock-mode smoke test (client demo, offline)
+        run: python src/client_demo.py
