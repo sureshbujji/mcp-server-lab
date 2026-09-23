@@ -1,0 +1,50 @@
+[
+  {
+    "id": "TC-LOGIN-001",
+    "name": "Valid user login returns a session token",
+    "steps": [
+      {
+        "action": "POST /api/login with valid credentials",
+        "expected": "200 + token",
+        "simulated_actual": "200 + token"
+      },
+      {
+        "action": "GET /api/me as the logged-in user",
+        "expected": "200 user profile",
+        "simulated_actual": "200 user profile"
+      }
+    ]
+  },
+  {
+    "id": "TC-LOGIN-002",
+    "name": "Locked account login is rejected",
+    "steps": [
+      {
+        "action": "POST /api/login with locked account",
+        "expected": "403 account_locked",
+        "simulated_actual": "403 account_locked"
+      },
+      {
+        "action": "POST /api/login with wrong password x3",
+        "expected": "429 rate_limited",
+        "simulated_actual": "429 rate_limited"
+      }
+    ]
+  },
+  {
+    "id": "TC-CHECKOUT-001",
+    "name": "Checkout applies the SAVE10 discount code",
+    "steps": [
+      {
+        "action": "POST /api/cart with 1x widget ($100.00)",
+        "expected": "cart total 100.00",
+        "simulated_actual": "cart total 100.00"
+      },
+      {
+        "action": "POST /api/cart/checkout with code SAVE10",
+        "expected": "total = 90.00",
+        "simulated_actual": "total = 95.00"
+      }
+    ]
+  }
+]
